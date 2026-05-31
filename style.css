@@ -1,0 +1,369 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+
+body{
+  font-family: 'DynaPuff', sans-serif;
+  background:#020617;
+  color:white;
+}
+
+.scene{
+position:absolute;inset:0;
+display:flex;justify-content:center;align-items:center;
+opacity:0;visibility:hidden;transition:.8s ease;
+z-index: 2;
+}
+
+.scene.active{opacity:1;visibility:visible}
+.center{text-align:center;width:90%;max-width:900px;margin:auto}
+
+/* ===== INTERACTIVE PARALLAX BACKGROUND ===== */
+#stars {
+  position: fixed;
+  inset: -10%; 
+  z-index: 1;
+  background: #020617;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.nebula-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(96, 165, 250, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 20%, rgba(30, 58, 138, 0.25) 0%, transparent 50%);
+  filter: blur(20px);
+  animation: nebulaPulse 8s ease-in-out infinite alternate;
+}
+
+.star-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, #fff 100%, transparent),
+    radial-gradient(1.5px 1.5px at 40% 70%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.7) 100%, transparent),
+    radial-gradient(2px 2px at 90% 80%, #60a5fa 100%, transparent),
+    radial-gradient(1px 1px at 25% 85%, #fff 100%, transparent),
+    radial-gradient(1.5px 1.5px at 60% 15%, rgba(96, 165, 250, 0.8) 100%, transparent);
+  background-size: 50% 50%;
+}
+
+@keyframes nebulaPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+.star{
+position:absolute;
+width:2px;height:2px;
+background:white;
+border-radius:50%;
+opacity:.4;
+animation:floatStar 10s linear infinite;
+}
+@keyframes floatStar{
+from{transform:translateY(110vh);opacity:0}
+50%{opacity:1}
+to{transform:translateY(-10vh);opacity:0}
+}
+
+/* INTRO SCENE */
+.title{
+font-size:calc(2.5rem + 2.5vw);
+font-family:"Playfair Display", serif;
+font-weight: 700;
+background: linear-gradient(to right, #ffffff, #93c5fd);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+filter: drop-shadow(0 4px 12px rgba(255,255,255,0.1));
+letter-spacing: -1px;
+}
+.subtitle{font-family:'Poppins', sans-serif; font-weight:300; opacity:.6; margin-bottom:30px; letter-spacing:1px; font-size: calc(0.9rem + 0.2vw);}
+.date{font-family:'Poppins', sans-serif; letter-spacing:5px; opacity:.5; margin-bottom:10px; font-size:0.9rem}
+
+/* BUTTON START */
+button{
+font-family: 'DynaPuff', sans-serif;
+font-size: 1.1rem;
+padding:18px 60px;border:none;border-radius:999px;
+background:linear-gradient(135deg,#2563eb,#60a5fa);
+color:white;font-weight:600;cursor:pointer;
+box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
+transition: all 0.3s ease;
+letter-spacing: 0.5px;
+}
+button:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 30px rgba(37, 99, 235, 0.6), inset 0 2px 4px rgba(255,255,255,0.4);
+}
+
+/* UPDATE SCENE */
+.version{
+font-size:calc(4rem + 2vw);
+color:#60a5fa;
+margin:20px 0;
+font-weight: 700;
+text-shadow: 0 0 35px rgba(96, 165, 250, 0.5);
+animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.05); }
+}
+
+.installBox {
+background: rgba(255, 255, 255, 0.02);
+padding: 25px;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(4px);
+}
+.installBox p { font-family:'Poppins', sans-serif; margin-bottom: 15px; opacity: 0.8; font-size: 0.9rem; }
+.progress{height:12px;background:rgba(255,255,255,.05);border-radius:999px;overflow:hidden;}
+#progressBar{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#38bdf8,#60a5fa)}
+
+/* ERROR SCENE */
+.warning{
+font-size:calc(3rem + 1.5vw);
+color:#ef4444;
+font-weight: 700;
+text-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+letter-spacing: 2px;
+}
+.errorText { font-family:'Poppins', sans-serif; opacity: 0.7; font-size: 1.1rem; margin-top: 5px;}
+#searchText{color:#38bdf8;margin-top:20px;font-weight: 500;}
+
+/* REVEAL & FINAL SCENE (STYLE BARU: CLEAN, GAGAH, DAN ENAK DILIHAT) */
+.ingredient { font-family:'Poppins', sans-serif; letter-spacing: 4px; opacity: 0.6; font-size: 0.9rem; text-transform: uppercase; }
+
+.lettering-name {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
+  font-size: calc(2.8rem + 2.5vw) !important;
+  text-transform: uppercase; 
+  letter-spacing: -1px;
+  line-height: 1.2;
+  
+  /* Gradasi Lembut Maskulin */
+  background: linear-gradient(to bottom, #ffffff 40%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Glow Cyber-Romantic Tipis */
+  filter: drop-shadow(0 0 25px rgba(37, 99, 235, 0.4));
+  display: block;
+  width: 100%;
+}
+
+.finalName {
+  font-size: calc(3.2rem + 3vw) !important; 
+  margin: 10px 0 20px 0 !important;
+  letter-spacing: -2px;
+}
+
+/* ===== COCOK & AESTHETIC BLUE CAKE ===== */
+.cakeTitle { font-family:'Poppins', sans-serif; font-size: 1.2rem; transition: all 0.5s ease;}
+#cake{
+position:relative;
+width:300px;
+height:320px;
+margin:40px auto 0 auto;
+filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+animation: floatCake 4s infinite ease-in-out;
+}
+@keyframes floatCake {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+
+.layer1, .layer2, .layer3, .frosting, .candle, .age { opacity:0; }
+
+.layer1{
+position:absolute;bottom:0;left:0;width:300px;height:90px;
+background: linear-gradient(to top, #1e3a8a, #2563eb);
+border-radius:12px 12px 20px 20px;
+box-shadow: inset 0 -5px 10px rgba(0,0,0,0.4);
+}
+.layer2{
+position:absolute;bottom:90px;left:25px;width:250px;height:80px;
+background: linear-gradient(to top, #2563eb, #60a5fa);
+border-radius:12px 12px 15px 15px;
+box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
+}
+.layer3{
+position:absolute;bottom:170px;left:50px;width:200px;height:70px;
+background: linear-gradient(to top, #f8fafc, #ffffff);
+border-radius:12px 12px 12px 12px;
+box-shadow: inset 0 -3px 6px rgba(0,0,0,0.15);
+}
+
+.strawberry-left, .strawberry-right {
+  position: absolute;
+  top: -28px;
+  font-size: 1.5rem;
+  z-index: 10;
+  opacity: 0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  transition: opacity 1s ease;
+}
+.strawberry-left { left: 15px; }
+.strawberry-right { right: 15px; }
+
+.frosting{
+position:absolute;top:103px;left:50%;transform:translateX(-50%);
+width:204px;height:22px;
+background: #ffffff;
+border-radius: 0 0 15px 15px;
+clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 90% 85%, 80% 40%, 70% 95%, 60% 50%, 50% 100%, 40% 45%, 30% 90%, 20% 40%, 10% 80%, 0% 35%);
+}
+.candle{
+position:absolute;top:45px;left:50%;transform:translateX(-50%);
+width:12px;height:55px;
+background: repeating-linear-gradient(45deg, #60a5fa, #60a5fa 5px, #ffffff 5px, #ffffff 10px);
+border-radius: 3px;
+}
+.flame{
+width:16px;height:24px;
+background: radial-gradient(circle at bottom, #ffee55, #f97316, #ef4444);
+border-radius: 50% 50% 20% 20%;
+position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+box-shadow: 0 0 20px #fbbf24, 0 0 40px #f97316;
+animation: flicker 0.1s infinite alternate;
+}
+@keyframes flicker {
+0% { transform: translateX(-50%) scale(0.95); }
+100% { transform: translateX(-50%) scale(1.05); }
+}
+
+.age{
+position: absolute; top: 125px; left: 50%; transform: translateX(-50%);
+font-size: 2.5rem; font-weight: 800; color: #1e3a8a; opacity: 0;
+}
+
+/* WISH SCENE */
+#wishScene{
+background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15), transparent 70%);
+}
+#wishContainer{
+padding: 40px 25px;
+border-radius: 24px;
+background: rgba(255, 255, 255, 0.02);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.06);
+box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+width: 100%;
+}
+.wish{
+display:none;
+font-family: 'Sacramento', cursive;
+font-size: calc(1.9rem + 0.6vw); 
+line-height:1.6;
+font-weight:400;
+color: #f8fafc;
+text-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+margin: 15px auto;
+max-width:750px;
+}
+.wish.show{
+display:block;
+animation: wishFade 1.2s ease forwards;
+}
+@keyframes wishFade{
+from{ opacity:0; transform: translateY(20px); filter: blur(5px); }
+to{ opacity:1; transform: translateY(0); filter: blur(0); }
+}
+
+/* HEARTS PARTIKEL */
+#hearts{position:fixed;inset:0;pointer-events:none;z-index: 3;}
+.heart{
+position:absolute;
+color:rgba(96, 165, 250, 0.4);
+animation:fall linear forwards;
+}
+@keyframes fall{
+from{transform:translateY(-50px) rotate(0deg);opacity:0}
+50%{opacity:0.6}
+to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* FINAL SCENE */
+.finalTitle{
+font-size: calc(2.2rem + 1.5vw);
+background: linear-gradient(to right, #ffffff, #cbd5e1);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.finalAge{
+font-size:2rem; 
+font-weight: 300;
+background: rgba(255,255,255,0.05);
+display: inline-block;
+padding: 5px 25px;
+border-radius: 999px;
+border: 1px solid rgba(255,255,255,0.1);
+backdrop-filter: blur(4px);
+margin-top: 20px;
+}
+.finalDate { font-family:'Poppins', sans-serif; opacity: 0.4; font-size: 0.9rem; margin-top: 15px; letter-spacing: 3px;}
+
+.signature{
+  font-family: 'Sacramento', cursive;
+  font-size: 2.3rem;
+  margin-top:30px;
+  opacity:.9;
+  font-weight: 400;
+  color: #93c5fd;
+}
+
+/* ======================
+   ROMANTIC LOVE CURTAIN
+   ====================== */
+#loveCurtain {
+  position: fixed;
+  left: 0;
+  top: 100vh;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; 
+  background: #020617;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#loveCurtain svg {
+  width: 150vw; 
+  height: 150vh;
+  filter: drop-shadow(0 0 60px rgba(37, 99, 235, 0.8));
+}
+
+/* MEDIA QUERIES (FULL RESPONSIVE DI HP / MOBILE) */
+@media (max-width: 600px) {
+  .lettering-name {
+    font-size: calc(2.2rem + 1.5vw) !important;
+    letter-spacing: -0.5px;
+  }
+  
+  .finalName {
+    font-size: calc(2.6rem + 2vw) !important;
+  }
+
+  #cake {
+    transform: scale(0.75);
+    margin-top: 10px;
+    height: 290px;
+  }
+  #wishContainer {
+    padding: 25px 15px;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  .wish {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+}

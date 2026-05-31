@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Factory | Rapi</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts: DynaPuff (Cute/Bulat), Playfair Display (Elegant Clean Serif), Sacramento (Tulisan Tangan) -->
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;600;700&family=Playfair+Display:wght@700&family=Sacramento&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Hordeng Transisi Love Raksasa Warna Biru Cowok -->
+  <div id="loveCurtain">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path d="M50 30 C35 10, 0 10, 0 45 C0 75, 45 95, 50 100 C55 95, 100 75, 100 45 C100 10, 65 10, 50 30 Z" fill="#2563eb"/>
+    </svg>
+  </div>
+
+  <audio id="music" loop>
+    <source src="assets/music/jagat-rasa.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Background Interaktif Parallax -->
+  <div id="stars">
+    <div class="nebula-layer"></div>
+    <div class="star-layer"></div>
+  </div>
+
+  <section id="intro" class="scene active">
+    <div class="center">
+      <p class="date">01 JUNE 2026</p>
+      <h1 class="title">Birthday Factory™</h1>
+      <p class="subtitle">Preparing celebration...</p>
+      <button id="startBtn">START</button>
+    </div>
+  </section>
+
+  <section id="updateScene" class="scene">
+    <div class="center">
+      <h2>Current Version</h2>
+      <div class="version">19</div>
+      <div class="installBox">
+        <p>Installing Version 20...</p>
+        <div class="progress">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="errorScene" class="scene">
+    <div class="center">
+      <h2 class="warning">WARNING</h2>
+      <p class="errorText">Required Ingredient Missing</p>
+      <p id="searchText">Searching...</p>
+    </div>
+  </section>
+
+  <section id="revealScene" class="scene">
+    <div class="center">
+      <p class="ingredient">Ingredient Found</p>
+      <!-- Nama Lengkap dengan Gaya Clean & Elegant Serif -->
+      <h1 class="rapi lettering-name">M. Rafi Somantri</h1>
+    </div>
+  </section>
+
+  <section id="cakeScene" class="scene">
+    <div class="center">
+      <p class="cakeTitle" id="cakeInstruction">Creating Birthday Cake...</p>
+      <div id="cake">
+        <div class="layer1"></div>
+        <div class="layer2"></div>
+        <div class="layer3">
+          <span class="strawberry-left">🍓</span>
+          <span class="strawberry-right">🍓</span>
+        </div>
+        <div class="frosting"></div>
+        <div class="candle"><div class="flame" id="cakeFlame"></div></div>
+        <div class="age">20</div>
+      </div>
+      <!-- Tombol Tiup Lilin Interaktif -->
+      <button id="blowBtn" style="display:none; margin: 30px auto 0 auto; padding: 12px 40px; font-size: 1rem;">Blow the Candle 🎂</button>
+    </div>
+  </section>
+
+  <section id="wishScene" class="scene">
+    <div class="center">
+      <div id="wishContainer">
+        <p class="wish">Happy Birthday, Sayang!</p>
+        <p class="wish">Welcome to chapter 20</p>
+        <p class="wish">Aku nggak tahu tahun ini bakal membawa kamu ke mana</p>
+        <p class="wish">Mungkin ada hal-hal baik yang datang tanpa diduga</p>
+        <p class="wish">Mungkin juga ada tantangan yang bikin capek</p>
+        <p class="wish">Tapi aku harap di tengah semua itu, kamu tetap menemukan alasan untuk menikmati hidupmu sendiri</p>
+        <p class="wish">I hope you get more opportunities than worries, more good days than bad ones, and more moments that make you proud of how far you've come</p>
+        <p class="wish">Thank you for being someone who means a lot to me</p>
+        <p class="wish">Please don't be too hard on yourself</p>
+        <p class="wish">You're doing better than you think</p>
+        <p class="wish">Enjoy being 20!</p>
+        <p class="wish">And enjoy today!</p>
+        <p class="wish">Happy Birthday!</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="hearts"></div>
+
+  <section id="finalScene" class="scene">
+    <div class="center">
+      <h1 class="finalTitle">HAPPY BIRTHDAY</h1>
+      <!-- Nama Panggilan Modifikasi Bersih Tanpa Inline Style Menggangu -->
+      <h2 class="finalName lettering-name">RAFI SAYANGG</h2>
+      <div class="finalAge">20</div>
+      <p class="finalDate">01 JUNE 2026</p>
+      <p class="signature">Made with love,<br>Selina</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
